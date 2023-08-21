@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
-import TodoInput from './components/TodoInput';
+import { StyleSheet, View, TextInput, Button } from 'react-native';
+
 import TodoList from './components/TodoList';
 
 const App = () => {
@@ -9,9 +9,13 @@ const App = () => {
     'Sleep',
     'Repeat',
   ]);
+  const [task, setTask] = useState('');
 
-  const handleAddTask = (newTask) => {
-    setTasks([...tasks, newTask]);
+  const handleAddTask = () => {
+    if (task.trim() !== '') {
+      setTasks([...tasks, task]);
+      setTask('');
+    }
   };
 
   const handleDeleteTask = (taskToDelete) => {
@@ -21,7 +25,16 @@ const App = () => {
 
   return (
     <View style={styles.container}>
-      <TodoInput onAddTask={handleAddTask} />
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.input}
+          placeholder="Enter a new task"
+          value={task}
+          onChangeText={(text) => setTask(text)}
+        />
+        <Button title="Add" onPress={handleAddTask} />
+      </View>
+
       <TodoList tasks={tasks} onDeleteTask={handleDeleteTask} />
     </View>
   );
@@ -34,7 +47,18 @@ const styles = StyleSheet.create({
     paddingTop: 50,
     backgroundColor: '#fff',
   },
+  inputContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  input: {
+    width: '70%',
+    borderBottomWidth: 1,
+    borderColor: '#ccc',
+    padding: 5,
+  },
 });
 
 export default App;
-
