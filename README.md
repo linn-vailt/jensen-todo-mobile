@@ -1,5 +1,5 @@
 # jensen-todo-mobile
 
-Run:
-npm install
-npm start
+* Run:
+* npm install
+* npm start
