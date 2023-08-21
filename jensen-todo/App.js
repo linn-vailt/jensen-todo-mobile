@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, TextInput, Button, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, TextInput, Button } from 'react-native';
 
 import TodoList from './components/TodoList';
 
@@ -32,7 +32,7 @@ const App = () => {
           value={task}
           onChangeText={(text) => setTask(text)}
         />
-        <TouchableOpacity  style={styles.addButton} title="Add" onPress={handleAddTask} />
+        <Button title="Add" onPress={handleAddTask} />
       </View>
 
       <TodoList tasks={tasks} onDeleteTask={handleDeleteTask} />
@@ -58,14 +58,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: '#ccc',
     padding: 5,
-  },
-  addButton: {
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 8,
-    alignItems: 'center',
-    borderWidth: 1,
-
   },
 });
 
