@@ -5,7 +5,7 @@ const TodoItem = ({ task, onDelete }) => {
   return (
     <View style={styles.itemContainer}>
       <Text>{task}</Text>
-      <Button title="Delete" color="red" onPress={onDelete} />
+      <Button title="Delete" color="red" onPress={onDelete}/>
     </View>
   );
 };

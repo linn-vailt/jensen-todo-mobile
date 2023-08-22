@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, TextInput, Button } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 
 import TodoList from './components/TodoList';
 
@@ -25,6 +25,7 @@ const App = () => {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.headerText}>Keep-A-Task!</Text>
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
@@ -34,7 +35,6 @@ const App = () => {
         />
         <Button title="Add" onPress={handleAddTask} />
       </View>
-
       <TodoList tasks={tasks} onDeleteTask={handleDeleteTask} />
     </View>
   );
@@ -47,11 +47,24 @@ const styles = StyleSheet.create({
     paddingTop: 50,
     backgroundColor: '#fff',
   },
+  headerText: {
+    fontFamily: 'monospace',
+    fontSize: 34,
+    alignSelf: 'center',
+    marginBottom: 15,
+    borderBottomWidth: 2,
+    textShadowColor: 'rgba(0, 0, 0, 0.5)',
+    textShadowOffset: { width: 2, height: 2 },
+    textShadowRadius: 4,
+  },
   inputContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 10,
+    marginBottom: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: 'black',
+    borderStyle: 'dotted',
   },
   input: {
     width: '70%',
